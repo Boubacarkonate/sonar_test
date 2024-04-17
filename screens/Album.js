@@ -93,6 +93,7 @@ export default function Album() {
             />
         </View>
     )
+    
 }
 
 const styles = StyleSheet.create({});
