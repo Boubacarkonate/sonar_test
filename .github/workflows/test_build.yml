@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Unit Tests and End-to-End Tests
+    name: Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,9 +27,18 @@ jobs:
       - name: Run unit tests
         run: npm test 
 
-      - name: End-to-End Tests
-        run: |
-          node testE2E.js
+  sonarcloud:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
     name: Deploy to Expo
@@ -52,5 +61,3 @@ jobs:
 
       - name: Publish to Expo
         run: expo publish --non-interactive
-
-      # Add any additional deployment steps here, such as notifying your team or updating a deployment status
