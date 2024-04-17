@@ -30,7 +30,6 @@ jobs:
       # Ajoutez l'étape pour le test end-to-end
       - name: End-to-End Tests
         run: |
-          npm install selenium-webdriver
           node testE2E.js
 
   sonarcloud:
