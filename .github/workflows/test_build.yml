@@ -71,8 +71,10 @@ jobs:
       - name: Install EAS CLI
         run: npm install -g eas-cli
 
+      - name: EAS Login
+        run: |
+          echo "${{ secrets.EXPO_CLI_USERNAME }}" | eas login --stdin
+          echo "${{ secrets.EXPO_CLI_PASSWORD }}" | eas login --stdin
+
       - name: Build APK
-        run: eas build -p android --profile preview --non-interactive
-        env:
-          EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
-          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
+        run: eas build -p android --profile preview
