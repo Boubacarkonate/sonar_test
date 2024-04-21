@@ -68,12 +68,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '20'
-
-      - name: Install EAS CLI 
+      - name: Install EAS CLI
         run: npm install -g eas-cli
 
       - name: Build APK
@@ -81,6 +76,3 @@ jobs:
         env:
           EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
           EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
-
-
-
