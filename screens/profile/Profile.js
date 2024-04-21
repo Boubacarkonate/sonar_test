@@ -5,7 +5,7 @@ import { db, authentication } from '../../firebase/firebaseConfig';
 import { Button } from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
 
-export default function Profile() {
+export default function Profile( {navigation} ) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -51,8 +51,8 @@ export default function Profile() {
                 title='Avatar'
             />
        <Button
-                // onPress={() => navigation.navigate("UpdateProfile")}
-                // style={styles.btn}
+                onPress={() => navigation.navigate("UpdateProfile")}
+                style={styles.btn}
                 title='Update'
             />
        <Button
